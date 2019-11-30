@@ -38,4 +38,16 @@
     <style name="BlueTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="BlueTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="BrownTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/ironstone</item>
+        <item name="colorPrimaryDark">@color/very_dark_brown</item>
+        <item name="colorAccent">@color/orange</item>
+    </style>
+    <style name="BrownTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="BrownTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="BrownTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
