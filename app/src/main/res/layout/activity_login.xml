@@ -38,7 +38,20 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/login_margin_top"
         android:layout_below="@+id/tInputLayoutLogin"
         android:text="@string/login"/>
+
+    <Button
+        android:id="@+id/btnExit"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        style="?attr/borderlessButtonStyle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/login_margin_top"
+        android:layout_below="@+id/btnLogin"
+        android:text="Exit"/>
+
+
 
 </RelativeLayout>
