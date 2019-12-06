@@ -1,4 +1,4 @@
-package com.example.temporaryname.ui.slideshow;
+package com.example.temporaryname.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

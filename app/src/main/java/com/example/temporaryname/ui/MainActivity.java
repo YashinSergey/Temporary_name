@@ -1,4 +1,4 @@
-package com.example.temporaryname;
+package com.example.temporaryname.ui;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.temporaryname.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -45,6 +46,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void initFragments(Bundle savedInstanceState) {
+        weatherFragment = new WeatherFragment();
+        if (savedInstanceState == null) {
+            replaceFragment(weatherFragment);
+        }
+        settingsFragment = new SettingsFragment();
+        aboutDeveloperFragment = new AboutApplicationFragment();
+        feedbackFragment = new FeedbackFragment();
     }
 
     private void initToolbar() {

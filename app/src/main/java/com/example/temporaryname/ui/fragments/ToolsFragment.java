@@ -1,4 +1,4 @@
-package com.example.temporaryname.ui.tools;
+package com.example.temporaryname.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
