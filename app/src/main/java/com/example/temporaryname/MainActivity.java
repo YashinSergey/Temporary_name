@@ -7,61 +7,54 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Objects;
 
-    private AppBarConfiguration mAppBarConfiguration;
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     private Toolbar toolbar;
     private  FloatingActionButton fab;
-    private DrawerLayout drawer;
+    private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private ActionBarDrawerToggle toggle;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initViews();
-        setSupportActionBar(toolbar);
-
-        fab.setOnClickListener(fabListener);
-
-        appBarSetting();
-        navControllerSetting();
-        navigationView.setNavigationItemSelectedListener(navigationListener);
+        initToolbar();
+        initNavigationDrawer();
+        initFab();
     }
 
-    private void appBarSetting() {
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
-                .setDrawerLayout(drawer)
-                .build();
-    }
-
-    private void navControllerSetting() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-    }
-
-    private void initViews() {
-        toolbar = findViewById(R.id.toolbar);
-        fab = findViewById(R.id.fab);
-        drawer = findViewById(R.id.drawer_layout);
+    private void initNavigationDrawer() {
+        drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void initToolbar() {
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    private void initFab() {
+        fab = findViewById(R.id.fab);
+        fab.setOnClickListener(fabListener);
     }
 
     @Override
@@ -70,27 +63,10 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    NavigationView.OnNavigationItemSelectedListener navigationListener = new NavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            int id = menuItem.getItemId();
-            switch (id) {
-                case R.id.nav_back:
-                    onBackPressed();
-                    Toast.makeText(getApplicationContext(), "sdfg",Toast.LENGTH_SHORT).show();
-                    break;
-            }
-            drawer.closeDrawer(GravityCompat.START);
-            return true;
-        }
-    };
-
-
     @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (toggle.onOptionsItemSelected(item)) return true;
+        return super.onOptionsItemSelected(item);
     }
 
     View.OnClickListener fabListener = new View.OnClickListener() {
@@ -100,4 +76,17 @@ public class MainActivity extends AppCompatActivity {
                     .setAction("Action", null).show();
         }
     };
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int id = menuItem.getItemId();
+        switch (id) {
+            case R.id.nav_back:
+                onBackPressed();
+                Toast.makeText(getApplicationContext(), "sdfg",Toast.LENGTH_SHORT).show();
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
 }

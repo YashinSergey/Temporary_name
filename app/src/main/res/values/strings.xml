@@ -15,4 +15,6 @@
     <string name="menu_send">Send</string>
     <string name="login">login</string>
     <string name="menu_back">Back</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
