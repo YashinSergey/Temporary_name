@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -111,10 +110,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
         switch (id) {
-            case R.id.nav_back:
-                onBackPressed();
-                Toast.makeText(getApplicationContext(), "sdfg",Toast.LENGTH_SHORT).show();
-                break;
             case R.id.nav_gallery:
                 replaceFragment(galleryFragment);
                 break;
@@ -150,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void replaceFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+        fragmentTransaction.replace(R.id.container_for_fragments, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
