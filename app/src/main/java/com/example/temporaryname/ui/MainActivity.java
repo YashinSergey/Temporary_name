@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 replaceFragment(toolsFragment);
                 break;
         }
-        setTitle(id);
+        setToolbarTitle(id);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.commit();
     }
 
-    public void setTitle(int id) {
+    private void setToolbarTitle(int id) {
         String title = "";
         switch (id) {
             case R.id.nav_gallery:
