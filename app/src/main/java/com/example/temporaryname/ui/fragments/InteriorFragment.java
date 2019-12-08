@@ -10,10 +10,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.temporaryname.R;
 
-public class GalleryFragment extends Fragment {
+public class InteriorFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_gallery, container, false);
+        return inflater.inflate(R.layout.fragment_interior, container, false);
 
     }
 }
