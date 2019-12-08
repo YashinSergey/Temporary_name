@@ -18,4 +18,7 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="image">image</string>
+    <string name="muscle_cars">Muscle cars</string>
+    <string name="interior">Interior</string>
+    <string name="greatest_people">Greatest people</string>
 </resources>
