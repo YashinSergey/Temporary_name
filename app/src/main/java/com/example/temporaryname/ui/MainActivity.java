@@ -15,9 +15,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.temporaryname.R;
+import com.example.temporaryname.ui.fragments.GreatestPeopleFragment;
 import com.example.temporaryname.ui.fragments.InteriorFragment;
 import com.example.temporaryname.ui.fragments.MuscleCarsFragment;
-import com.example.temporaryname.ui.fragments.GreatestPeopleFragment;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -27,7 +28,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbar;
-    private  FloatingActionButton fab;
+    private FloatingActionButton fab;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
@@ -35,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private InteriorFragment interiorFragment;
     private MuscleCarsFragment muscleCarsFragment;
     private GreatestPeopleFragment greatestPeopleFragment;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void initToolbar() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
+        CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingToolbarLayout);
+        collapsingToolbarLayout.setTitleEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Muscle cars");
     }
 
     private void initFab() {
