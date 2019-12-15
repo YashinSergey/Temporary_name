@@ -18,4 +18,10 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="image">image</string>
+    <string name="muscle_cars">Muscle cars</string>
+    <string name="interior">Interior</string>
+    <string name="greatest_people">Greatest people</string>
+    <string name="abraham_lincoln_title">Abraham Lincoln</string>
+    <string name="muscle_cars_title">Muscle Cars and American Culture</string>
+    <string name="hi_tech_style_in_interior">Hi-Tech Style in Interior Design</string>
 </resources>

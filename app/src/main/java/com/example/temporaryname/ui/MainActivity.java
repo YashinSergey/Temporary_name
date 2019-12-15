@@ -15,12 +15,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.temporaryname.R;
-import com.example.temporaryname.ui.fragments.GalleryFragment;
-import com.example.temporaryname.ui.fragments.HomeFragment;
-import com.example.temporaryname.ui.fragments.SendFragment;
-import com.example.temporaryname.ui.fragments.ShareFragment;
-import com.example.temporaryname.ui.fragments.SlideshowFragment;
-import com.example.temporaryname.ui.fragments.ToolsFragment;
+import com.example.temporaryname.ui.fragments.GreatestPeopleFragment;
+import com.example.temporaryname.ui.fragments.InteriorFragment;
+import com.example.temporaryname.ui.fragments.MuscleCarsFragment;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -30,18 +28,14 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbar;
-    private  FloatingActionButton fab;
+    private FloatingActionButton fab;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
 
-    private GalleryFragment galleryFragment;
-    private HomeFragment homeFragment;
-    private SendFragment sendFragment;
-    private ShareFragment shareFragment;
-    private SlideshowFragment slideshowFragment;
-    private ToolsFragment toolsFragment;
-
+    private InteriorFragment interiorFragment;
+    private MuscleCarsFragment muscleCarsFragment;
+    private GreatestPeopleFragment greatestPeopleFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,21 +58,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initFragments(Bundle savedInstanceState) {
-        galleryFragment = new GalleryFragment();
-        homeFragment = new HomeFragment();
-        sendFragment = new SendFragment();
-        shareFragment = new ShareFragment();
-        slideshowFragment = new SlideshowFragment();
-        toolsFragment = new ToolsFragment();
+        interiorFragment = new InteriorFragment();
+        muscleCarsFragment = new MuscleCarsFragment();
+        greatestPeopleFragment = new GreatestPeopleFragment();
         if (savedInstanceState == null) {
-            replaceFragment(homeFragment);
+            replaceFragment(muscleCarsFragment);
         }
     }
 
     private void initToolbar() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
+        CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingToolbarLayout);
+        collapsingToolbarLayout.setTitleEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Muscle cars");
     }
 
     private void initFab() {
@@ -110,23 +103,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
         switch (id) {
-            case R.id.nav_gallery:
-                replaceFragment(galleryFragment);
+            case R.id.nav_interior:
+                replaceFragment(interiorFragment);
                 break;
-            case R.id.nav_home:
-                replaceFragment(homeFragment);
+            case R.id.nav_muscle_cars:
+                replaceFragment(muscleCarsFragment);
                 break;
-            case R.id.nav_send:
-                replaceFragment(sendFragment);
-                break;
-            case R.id.nav_share:
-                replaceFragment(shareFragment);
-                break;
-            case R.id.nav_slideshow:
-                replaceFragment(slideshowFragment);
-                break;
-            case R.id.nav_tools:
-                replaceFragment(toolsFragment);
+            case R.id.nav_greatest_people:
+                replaceFragment(greatestPeopleFragment);
                 break;
         }
         setToolbarTitle(id);
@@ -153,23 +137,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void setToolbarTitle(int id) {
         String title = "";
         switch (id) {
-            case R.id.nav_gallery:
-               title = "Gallery";
+            case R.id.nav_interior:
+               title = "Interior";
                break;
-            case R.id.nav_home:
-                title = "Home";
+            case R.id.nav_muscle_cars:
+                title = "Muscle cars";
                 break;
-            case R.id.nav_send:
-                title = "Send";
-                break;
-            case R.id.nav_share:
-                title = "Share";
-                break;
-            case R.id.nav_slideshow:
-                title = "Slideshow";
-                break;
-            case R.id.nav_tools:
-                title = "Tools";
+            case R.id.nav_greatest_people:
+                title = "Greatest people";
                 break;
         }
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
