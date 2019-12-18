@@ -18,6 +18,7 @@ import com.example.temporaryname.R;
 import com.example.temporaryname.ui.fragments.GreatestPeopleFragment;
 import com.example.temporaryname.ui.fragments.InteriorFragment;
 import com.example.temporaryname.ui.fragments.MuscleCarsFragment;
+import com.example.temporaryname.ui.fragments.recycler.RecyclerFragment;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private InteriorFragment interiorFragment;
     private MuscleCarsFragment muscleCarsFragment;
     private GreatestPeopleFragment greatestPeopleFragment;
+    private RecyclerFragment recyclerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         interiorFragment = new InteriorFragment();
         muscleCarsFragment = new MuscleCarsFragment();
         greatestPeopleFragment = new GreatestPeopleFragment();
+        recyclerFragment = new RecyclerFragment();
         if (savedInstanceState == null) {
             replaceFragment(muscleCarsFragment);
         }
@@ -112,6 +115,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_greatest_people:
                 replaceFragment(greatestPeopleFragment);
                 break;
+            case R.id.recycler_view_item:
+                replaceFragment(recyclerFragment);
+                break;
         }
         setToolbarTitle(id);
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -145,6 +151,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_greatest_people:
                 title = "Greatest people";
+                break;
+            case R.id.recycler_view_item:
+                title = "recyclerFragment";
                 break;
         }
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);

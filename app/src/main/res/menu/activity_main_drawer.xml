@@ -16,6 +16,10 @@
             android:id="@+id/nav_greatest_people"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/greatest_people" />
+        <item
+            android:id="@+id/recycler_view_item"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Recycler View" />
 
     </group>
 </menu>
