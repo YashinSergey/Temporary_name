@@ -1,4 +1,4 @@
-package com.example.temporaryname.ui.fragments.recyclerfragment;
+package com.example.temporaryname.ui.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;

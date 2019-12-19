@@ -1,4 +1,4 @@
-package com.example.temporaryname.ui.fragments.recyclerfragment;
+package com.example.temporaryname.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,11 +31,6 @@ public class GalleryFragment extends Fragment {
     }
 
     private void getIncomingIntent(View view){
-//        if(getIntent().hasExtra("image_url") && getIntent().hasExtra("image_name")){
-//            String imageUrl = getIntent().getStringExtra("image_url");
-//            String imageName = getIntent().getStringExtra("image_name");
-//            setImage(imageUrl, imageName);
-//        }
         Bundle bundle = getArguments();
         assert bundle != null;
         if(bundle.containsKey("image_url") && bundle.containsKey("image_name")){
