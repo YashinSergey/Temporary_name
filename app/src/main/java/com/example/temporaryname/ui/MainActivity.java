@@ -18,8 +18,8 @@ import com.example.temporaryname.R;
 import com.example.temporaryname.ui.fragments.GreatestPeopleFragment;
 import com.example.temporaryname.ui.fragments.InteriorFragment;
 import com.example.temporaryname.ui.fragments.MuscleCarsFragment;
-import com.example.temporaryname.ui.fragments.recyclerfragment.GalleryFragment;
-import com.example.temporaryname.ui.fragments.recyclerfragment.RecyclerFragment;
+import com.example.temporaryname.ui.fragments.GalleryFragment;
+import com.example.temporaryname.ui.fragments.RecyclerFragment;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 title = "Greatest people";
                 break;
             case R.id.recycler_view_item:
-                title = "recyclerFragment";
+                title = "Places";
                 break;
         }
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);

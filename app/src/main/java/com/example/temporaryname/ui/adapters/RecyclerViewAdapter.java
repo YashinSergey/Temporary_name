@@ -1,4 +1,4 @@
-package com.example.temporaryname.adapters;
+package com.example.temporaryname.ui.adapters;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
