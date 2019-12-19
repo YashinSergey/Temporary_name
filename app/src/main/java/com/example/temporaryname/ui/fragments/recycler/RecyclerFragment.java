@@ -26,7 +26,7 @@ public class RecyclerFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        activity = (MainActivity) getActivity();
+        activity = getActivity();
         return inflater.inflate(R.layout.fragment_recycler, container, false);
     }
 
@@ -70,7 +70,7 @@ public class RecyclerFragment extends Fragment {
 
     private void initRecyclerView(View view){
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(activity.getApplicationContext(), names, imageUrls);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter((MainActivity) activity, names, imageUrls);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(activity.getApplicationContext()));
     }

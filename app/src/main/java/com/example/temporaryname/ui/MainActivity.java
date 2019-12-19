@@ -18,6 +18,7 @@ import com.example.temporaryname.R;
 import com.example.temporaryname.ui.fragments.GreatestPeopleFragment;
 import com.example.temporaryname.ui.fragments.InteriorFragment;
 import com.example.temporaryname.ui.fragments.MuscleCarsFragment;
+import com.example.temporaryname.ui.fragments.recycler.GalleryFragment;
 import com.example.temporaryname.ui.fragments.recycler.RecyclerFragment;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private MuscleCarsFragment muscleCarsFragment;
     private GreatestPeopleFragment greatestPeopleFragment;
     private RecyclerFragment recyclerFragment;
+    private GalleryFragment galleryFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         muscleCarsFragment = new MuscleCarsFragment();
         greatestPeopleFragment = new GreatestPeopleFragment();
         recyclerFragment = new RecyclerFragment();
+        galleryFragment = new GalleryFragment();
         if (savedInstanceState == null) {
             replaceFragment(muscleCarsFragment);
         }
@@ -133,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private void replaceFragment(Fragment fragment) {
+    public void replaceFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.container_for_fragments, fragment);
         fragmentTransaction.addToBackStack(null);
@@ -157,5 +160,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+    }
+
+    public GalleryFragment getGalleryFragment() {
+        return galleryFragment;
     }
 }
