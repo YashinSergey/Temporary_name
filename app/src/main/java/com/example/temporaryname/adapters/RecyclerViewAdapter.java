@@ -1,4 +1,4 @@
-package com.example.temporaryname.ui.fragments.recyclerfragment;
+package com.example.temporaryname.adapters;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.temporaryname.R;
+import com.example.temporaryname.adapters.RecyclerViewAdapter;
 import com.example.temporaryname.ui.MainActivity;
 
 import java.util.ArrayList;
