@@ -20,6 +20,7 @@ import com.example.temporaryname.ui.fragments.InteriorFragment;
 import com.example.temporaryname.ui.fragments.MuscleCarsFragment;
 import com.example.temporaryname.ui.fragments.GalleryFragment;
 import com.example.temporaryname.ui.fragments.RecyclerFragment;
+import com.example.temporaryname.ui.fragments.SettingsFragment;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -40,10 +41,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private GreatestPeopleFragment greatestPeopleFragment;
     private RecyclerFragment recyclerFragment;
     private GalleryFragment galleryFragment;
+    private SettingsFragment settingsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         initToolbar();
         initNavigationDrawer();
@@ -67,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         greatestPeopleFragment = new GreatestPeopleFragment();
         recyclerFragment = new RecyclerFragment();
         galleryFragment = new GalleryFragment();
+        settingsFragment = new SettingsFragment();
         if (savedInstanceState == null) {
             replaceFragment(muscleCarsFragment);
         }
@@ -121,6 +125,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.recycler_view_item:
                 replaceFragment(recyclerFragment);
                 break;
+            case R.id.settings:
+                replaceFragment(settingsFragment);
+                break;
         }
         setToolbarTitle(id);
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -157,6 +164,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.recycler_view_item:
                 title = "Places";
+                break;
+            case R.id.settings:
+                title = "Settings";
                 break;
         }
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
