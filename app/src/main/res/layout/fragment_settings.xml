@@ -20,12 +20,8 @@
             android:padding="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:text="@string/default_android"
-                android:textSize="20sp"
-                tools:ignore="RelativeOverlap" />
+                style="@style/text_view_theme" />
 
             <RadioButton
                 android:id="@+id/rb_default"
@@ -41,11 +37,8 @@
             android:padding="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="@string/orange"
-                android:textSize="20sp"/>
+                style="@style/text_view_theme"
+                android:text="@string/orange" />
 
             <RadioButton
                 android:id="@+id/rb_orange"
@@ -61,11 +54,8 @@
             android:padding="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="@string/blue"
-                android:textSize="20sp"/>
+                style="@style/text_view_theme"
+                android:text="@string/blue" />
 
             <RadioButton
                 android:id="@+id/rb_blue"
@@ -81,11 +71,8 @@
             android:padding="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="@string/brown"
-                android:textSize="20sp"/>
+                style="@style/text_view_theme"
+                android:text="@string/brown" />
 
             <RadioButton
                 android:id="@+id/rb_brown"
