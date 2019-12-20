@@ -24,4 +24,10 @@
     <string name="abraham_lincoln_title">Abraham Lincoln</string>
     <string name="muscle_cars_title">Muscle Cars and American Culture</string>
     <string name="hi_tech_style_in_interior">Hi-Tech Style in Interior Design</string>
+    <string name="theme_setting">Theme setting</string>
+    <string name="default_android">Default android</string>
+    <string name="orange">Orange</string>
+    <string name="blue">Blue</string>
+    <string name="brown">Brown</string>
+    <string name="settings_item">Settings</string>
 </resources>
