@@ -20,6 +20,10 @@
             android:id="@+id/recycler_view_item"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Recycler View" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/settings_item"/>
 
     </group>
 </menu>

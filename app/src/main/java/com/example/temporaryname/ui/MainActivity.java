@@ -1,5 +1,7 @@
 package com.example.temporaryname.ui;
 
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +22,7 @@ import com.example.temporaryname.ui.fragments.InteriorFragment;
 import com.example.temporaryname.ui.fragments.MuscleCarsFragment;
 import com.example.temporaryname.ui.fragments.GalleryFragment;
 import com.example.temporaryname.ui.fragments.RecyclerFragment;
+import com.example.temporaryname.ui.fragments.SettingsFragment;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -28,6 +31,8 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static final String THEME = "THEME";
 
     private Toolbar toolbar;
     private FloatingActionButton fab;
@@ -40,16 +45,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private GreatestPeopleFragment greatestPeopleFragment;
     private RecyclerFragment recyclerFragment;
     private GalleryFragment galleryFragment;
+    private SettingsFragment settingsFragment;
+    private SharedPreferences sPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setAppTheme();
         setContentView(R.layout.activity_main);
         initToolbar();
         initNavigationDrawer();
         initFab();
         initFragments(savedInstanceState);
     }
+
+    public void setAppTheme() {
+        sPref = getPreferences(MODE_PRIVATE);
+        setTheme(sPref.getInt(THEME, -1));
+    }
+
 
     private void initNavigationDrawer() {
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -67,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         greatestPeopleFragment = new GreatestPeopleFragment();
         recyclerFragment = new RecyclerFragment();
         galleryFragment = new GalleryFragment();
+        settingsFragment = new SettingsFragment();
         if (savedInstanceState == null) {
             replaceFragment(muscleCarsFragment);
         }
@@ -77,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingToolbarLayout);
         collapsingToolbarLayout.setTitleEnabled(false);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Muscle cars");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("");
     }
 
     private void initFab() {
@@ -121,6 +136,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.recycler_view_item:
                 replaceFragment(recyclerFragment);
                 break;
+            case R.id.settings:
+                replaceFragment(settingsFragment);
+                break;
         }
         setToolbarTitle(id);
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -157,6 +175,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.recycler_view_item:
                 title = "Places";
+                break;
+            case R.id.settings:
+                title = "Settings";
                 break;
         }
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
