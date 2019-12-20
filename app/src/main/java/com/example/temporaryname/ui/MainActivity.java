@@ -1,5 +1,7 @@
 package com.example.temporaryname.ui;
 
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +32,8 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static final String THEME = "THEME";
+
     private Toolbar toolbar;
     private FloatingActionButton fab;
     private DrawerLayout drawerLayout;
@@ -42,17 +46,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerFragment recyclerFragment;
     private GalleryFragment galleryFragment;
     private SettingsFragment settingsFragment;
+    private SharedPreferences sPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setAppTheme();
         setContentView(R.layout.activity_main);
         initToolbar();
         initNavigationDrawer();
         initFab();
         initFragments(savedInstanceState);
     }
+
+    public void setAppTheme() {
+        sPref = getPreferences(MODE_PRIVATE);
+        setTheme(sPref.getInt(THEME, -1));
+    }
+
 
     private void initNavigationDrawer() {
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -81,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingToolbarLayout);
         collapsingToolbarLayout.setTitleEnabled(false);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Muscle cars");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("");
     }
 
     private void initFab() {
