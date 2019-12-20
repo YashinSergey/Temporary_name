@@ -62,6 +62,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        setUnchecked();
         sPref = Objects.requireNonNull(getActivity()).getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sPref.edit();
         int themeNum = -1;
@@ -69,14 +70,18 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         switch (id) {
             case R.id.cb_default:
                 themeNum = R.style.DefaultAppTheme_NoActionBar;
+                cbDefault.setChecked(true);
                 break;
             case R.id.cb_orange:
                 themeNum = R.style.OrangeTheme_NoActionBar;
+                cbOrange.setChecked(true);
                 break;
             case R.id.cb_blue:
                 themeNum = R.style.BlueTheme_NoActionBar;
+                cbBlue.setChecked(true);
                 break;
             case R.id.cb_brown:
+                cbBrown.setChecked(true);
             case -1:
                 themeNum = R.style.BrownTheme_NoActionBar;
                 break;
@@ -84,5 +89,12 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         editor.putInt(MainActivity.THEME, themeNum);
         editor.apply();
         activity.recreate();
+    }
+
+    private void setUnchecked() {
+        cbDefault.setChecked(false);
+        cbOrange.setChecked(false);
+        cbBlue.setChecked(false);
+        cbBrown.setChecked(false);
     }
 }
